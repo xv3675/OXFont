@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,33 +13,15 @@
         body {
             font-family: 'Song Myung', serif;
         }
-
         #description {
             color: black;
             font-size: 16px;
             text-decoration: none;
         }
-
-        #youtube {
-            color: red;
-            text-decoration: underline;
-        }
-
-        #chzzk {
-            color: green;
-            text-decoration: underline;
-        }
-
-        #afreeca {
-            color: blue;
-            text-decoration: underline;
-        }
-
-        #twitch {
-            color: purple;
-            text-decoration: underline;
-        }
-
+        #youtube { color: red; text-decoration: underline; }
+        #chzzk { color: green; text-decoration: underline; }
+        #afreeca { color: blue; text-decoration: underline; }
+        #twitch { color: purple; text-decoration: underline; }
         #output {
             font-size: 20px;
             font-family: 'Song Myung', serif;
@@ -48,25 +29,14 @@
             padding: 20px;
             display: inline-block;
         }
-
-        #solidColorSection,
-        #gradientColorSection {
-            display: block;
-        }
-
-        #gradientColorSection {
-            display: none;
-        }
-
     </style>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
-
 <body>
     <div id="description">
-        This site was created for <a id="youtube" href="https://m.youtube.com/@OhxionYoutube" target="_blank">YouTube</a>,
-        <a id="chzzk" href="https://m.chzzk.naver.com/706fcc522eeef5bc523e19c3ad69973b" target="_blank">Chzzk</a>,
-        <a id="afreeca" href="https://bj.afreecatv.com/hirosuetv" target="_blank">Afreeca TV</a>,
+        This site was created for <a id="youtube" href="https://m.youtube.com/@OhxionYoutube" target="_blank">YouTube</a>, 
+        <a id="chzzk" href="https://m.chzzk.naver.com/706fcc522eeef5bc523e19c3ad69973b" target="_blank">Chzzk</a>, 
+        <a id="afreeca" href="https://bj.afreecatv.com/hirosuetv" target="_blank">Afreeca TV</a>, 
         <a id="twitch" href="https://m.twitch.tv/chrisoh/home" target="_blank">Twitch</a> streamer OhxioN.
         <p></p>
     </div>
@@ -115,7 +85,7 @@
         <label for="textColor">Text Color:</label>
         <input type="color" id="textColor" onchange="updateStyle()">
     </div>
-    <div id="gradientColorSection">
+    <div id="gradientColorSection" style="display: none;">
         <label for="startColor">Start Color:</label>
         <input type="color" id="startColor" onchange="updateStyle()">
         <label for="endColor">End Color:</label>
@@ -151,13 +121,12 @@
         <input type="range" id="shadowColorAlpha" min="0" max="1" step="0.01" value="0" onchange="updateStyle()">
     </div>
     <div>
-        <label for="gradientAngle">Gradient Angle:</label>
+        <label for="gradientAngle" style="display:none;">Gradient Angle:</label>
         <input type="range" id="gradientAngle" min="0" max="360" value="0" oninput="updateStyle()">
-        <span id="gradientAngleValue">0ÃÂÃÂ°</span>
+        <span id="gradientAngleValue" style="display:none;">0ÃÂÃÂ°</span>
     </div>
     <div id="output">Sample Text</div>
-    <button onclick="generatePNG()">Generate PNG</button>
-    <script>
+    <button onclick="generatePNG()">Generate PNG</button><script>
         function updateText() {
             var textInput = document.getElementById("textInput").value;
             document.getElementById("output").innerText = textInput;
@@ -183,7 +152,6 @@
             var shadowBlur = document.getElementById("shadowBlur").value;
             var shadowColor = document.getElementById("shadowColor").value;
             var shadowColorAlpha = document.getElementById("shadowColorAlpha").value;
-            var gradientAngle = document.getElementById("gradientAngle").value;
 
             output.style.fontSize = textSize + "px";
             output.style.fontWeight = textBold;
@@ -193,12 +161,15 @@
             if (document.getElementById("colorType").value === "solid") {
                 output.style.color = document.getElementById("textColor").value;
                 output.style.backgroundColor = "transparent";
-                output.style.background = "none";
+                document.getElementById("gradientAngle").style.display = "none";
+                document.getElementById("gradientAngleValue").style.display = "none";
             } else {
-                var gradient = `linear-gradient(${gradientAngle}deg, ${document.getElementById("startColor").value}, ${document.getElementById("endColor").value})`;
+                var gradient = `linear-gradient(${document.getElementById("gradientAngle").value}deg, ${document.getElementById("startColor").value}, ${document.getElementById("endColor").value})`;
                 output.style.background = gradient;
                 output.style.backgroundClip = "text";
                 output.style.color = "transparent";
+                document.getElementById("gradientAngle").style.display = "block";
+                document.getElementById("gradientAngleValue").style.display = "block";
             }
 
             output.style.webkitTextStrokeWidth = `${borderThickness}px`;
@@ -209,7 +180,7 @@
             document.getElementById("borderThicknessValue").innerText = borderThickness;
             document.getElementById("shadowDistanceValue").innerText = shadowDistance;
             document.getElementById("shadowAngleValue").innerText = shadowAngle + "ÃÂÃÂ°";
-            document.getElementById("gradientAngleValue").innerText = gradientAngle + "ÃÂÃÂ°";
+            document.getElementById("gradientAngleValue").innerText = document.getElementById("gradientAngle").value + "ÃÂÃÂ°";
         }
 
         function updateTextColor() {
@@ -232,9 +203,7 @@
             var textInput = document.getElementById("textInput").value;
             var outputDiv = document.getElementById("output");
 
-            html2canvas(outputDiv, {
-                backgroundColor: null
-            }).then(function (canvas) {
+            html2canvas(outputDiv, { backgroundColor: null }).then(function(canvas) {
                 var img = canvas.toDataURL("image/png");
                 var link = document.createElement('a');
                 link.href = img;
@@ -247,5 +216,4 @@
         updateStyle();
     </script>
 </body>
-
 </html>
