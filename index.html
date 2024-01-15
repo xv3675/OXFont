@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gasoek+One&family=Gowun+Batang&family=Nanum+Pen+Script&family=Single+Day&family=Song+Myung&display=swap" rel="stylesheet">
+    <title>OXFONT</title>
     <style>
         body {
             font-family: 'Song Myung', serif;
@@ -28,7 +29,6 @@
             padding: 20px;
             display: inline-block;
         }
-        /* Add your new font-face styles here */
     </style>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
@@ -55,7 +55,6 @@
             <option value="'Nanum Pen Script', cursive">Nanum Pen Script</option>
             <option value="'Single Day', cursive">Single Day</option>
             <option value="'Song Myung', serif">Song Myung</option>
-            <!-- Add new font options here -->
         </select>
     </div>
     <div>
@@ -75,19 +74,23 @@
         <label for="textUnderline">Underline:</label>
         <input type="checkbox" id="textUnderline" onchange="updateStyle()">
     </div>
-    <!-- Remove gradient related code -->
     <div>
         <label for="colorType">Color Type:</label>
         <select id="colorType" onchange="updateTextColor()">
             <option value="solid">Solid Color</option>
-            <!-- Remove gradient option -->
+            <option value="gradient">Gradient</option>
         </select>
     </div>
     <div id="solidColorSection">
         <label for="textColor">Text Color:</label>
         <input type="color" id="textColor" onchange="updateStyle()">
     </div>
-    <!-- Remove gradientColorSection -->
+    <div id="gradientColorSection" style="display: none;">
+        <label for="startColor">Start Color:</label>
+        <input type="color" id="startColor" onchange="updateStyle()">
+        <label for="endColor">End Color:</label>
+        <input type="color" id="endColor" onchange="updateStyle()">
+    </div>
     <div>
         <label for="borderThickness">Border Thickness (px):</label>
         <input type="range" id="borderThickness" min="0" max="6" step="1" value="0" onchange="updateStyle()">
@@ -118,8 +121,11 @@
         <input type="range" id="shadowColorAlpha" min="0" max="1" step="0.01" value="0" onchange="updateStyle()">
     </div>
     <div>
-        <label for="output">Sample Text</label>
+        <label for="gradientAngle" style="display:none;">Gradient Angle:</label>
+        <input type="range" id="gradientAngle" min="0" max="360" value="0" oninput="updateStyle()">
+        <span id="gradientAngleValue" style="display:none;">0ÃÂ°</span>
     </div>
+    <div id="output">Sample Text</div>
     <button onclick="generatePNG()">Generate PNG</button><script>
         function updateText() {
             var textInput = document.getElementById("textInput").value;
@@ -152,8 +158,19 @@
             output.style.fontStyle = textItalic;
             output.style.textDecoration = textUnderline;
 
-            output.style.color = document.getElementById("textColor").value;
-            output.style.backgroundColor = "transparent";
+            if (document.getElementById("colorType").value === "solid") {
+                output.style.color = document.getElementById("textColor").value;
+                output.style.backgroundColor = "transparent";
+                document.getElementById("gradientAngle").style.display = "none";
+                document.getElementById("gradientAngleValue").style.display = "none";
+            } else {
+                var gradient = `linear-gradient(${shadowAngle}deg, ${document.getElementById("startColor").value}, ${document.getElementById("endColor").value})`;
+                output.style.background = gradient;
+                output.style.backgroundClip = "text";
+                output.style.color = "transparent";
+                document.getElementById("gradientAngle").style.display = "block";
+                document.getElementById("gradientAngleValue").style.display = "block";
+            }
 
             output.style.webkitTextStrokeWidth = `${borderThickness}px`;
             output.style.webkitTextStrokeColor = borderColor;
@@ -163,17 +180,28 @@
             document.getElementById("borderThicknessValue").innerText = borderThickness;
             document.getElementById("shadowDistanceValue").innerText = shadowDistance;
             document.getElementById("shadowAngleValue").innerText = shadowAngle + "ÃÂ°";
+            document.getElementById("gradientAngleValue").innerText = shadowAngle + "ÃÂ°";
         }
 
         function updateTextColor() {
+            var colorType = document.getElementById("colorType").value;
             var solidColorSection = document.getElementById("solidColorSection");
-            solidColorSection.style.display = "block";
+            var gradientColorSection = document.getElementById("gradientColorSection");
+
+            if (colorType === "solid") {
+                solidColorSection.style.display = "block";
+                gradientColorSection.style.display = "none";
+            } else {
+                solidColorSection.style.display = "none";
+                gradientColorSection.style.display = "block";
+            }
+
             updateStyle();
         }
 
         function generatePNG() {
             var textInput = document.getElementById("textInput").value;
-            var outputDiv = document.getElementById("outputDiv");
+            var outputDiv = document.getElementById("output");
 
             html2canvas(outputDiv, { backgroundColor: null }).then(function(canvas) {
                 var img = canvas.toDataURL("image/png");
