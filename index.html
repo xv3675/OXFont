@@ -4,139 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This site was created for YouTube, Chzzk, Afreeca TV, Twitch streamer OhxioN, and strictly prohibits its use outside of its use.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gasoek+One&family=Gowun+Batang&family=Nanum+Pen+Script&family=Single+Day&family=Song+Myung&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Song Myung', serif;
-        }
-        #description {
-            color: black;
-            font-size: 16px;
-            text-decoration: none;
-        }
-        #youtube { color: red; text-decoration: underline; }
-        #chzzk { color: green; text-decoration: underline; }
-        #afreeca { color: blue; text-decoration: underline; }
-        #twitch { color: purple; text-decoration: underline; }
-        #output {
-            font-size: 20px;
-            font-family: 'Song Myung', serif;
-            text-align: center;
-            padding: 20px;
-            display: inline-block;
-        }
-    </style>
-
     <link rel="stylesheet" href="https://html2canvas.hertzen.com/dist/html2canvas.min.css">
-
     <style>
-        @font-face {
-            font-family: 'GapyeongHanseokbong-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/GapyeongHanseokbong-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'yg-jalnan';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Orbit-Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'JalnanGothic';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 300;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Light.otf') format('opentype');
-        }
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 500;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf') format('opentype');
-        }
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 700;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Bold.otf') format('opentype');
-        }
-        @font-face {
-            font-family: 'PartialSansKR-Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'DNFBitBitv2';
-            font-style: normal;
-            font-weight: 400;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf') format('opentype');
-        }
-        @font-face {
-            font-family: 'Giants-Inline';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'omyu_pretty';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'MBC1961GulimM';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'KimjungchulMyungjo-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Ansungtangmyun-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun-Bold.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'MYYeongnamnu';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYYeongnamnu.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
+        body { font-family: 'Song Myung', serif; }
+        #output { font-size: 20px; font-family: 'Song Myung', serif; text-align: center; padding: 20px; display: inline-block; }
+        #textInput, #fontSelect, #textSize, #borderThickness, #shadowDistance, #shadowAngle, #shadowBlur, #shadowColorAlpha { margin-bottom: 10px; }
     </style>
-
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
-    <div id="description">
-        This site was created for <a id="youtube" href="https://m.youtube.com/@OhxionYoutube" target="_blank">YouTube</a>, 
-        <a id="chzzk" href="https://m.chzzk.naver.com/706fcc522eeef5bc523e19c3ad69973b" target="_blank">Chzzk</a>, 
-        <a id="afreeca" href="https://bj.afreecatv.com/hirosuetv" target="_blank">Afreeca TV</a>, 
-        <a id="twitch" href="https://m.twitch.tv/chrisoh/home" target="_blank">Twitch</a> streamer OhxioN.
-        <p></p>
-    </div>
-
     <div>
         <label for="textInput">Enter Text:</label>
         <input type="text" id="textInput" oninput="updateText()">
@@ -147,23 +26,12 @@
             <option value="none" selected disabled hidden>None</option>
             <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
             <option value="'yg-jalnan', sans-serif">yg-jalnan</option>
-            <option value="'Orbit-Regular', serif">Orbit-Regular</option>
-            <option value="'JalnanGothic', sans-serif">JalnanGothic</option>
-            <option value="'DNFForgedBlade', sans-serif">DNFForgedBlade</option>
-            <option value="'PartialSansKR-Regular', serif">PartialSansKR-Regular</option>
-            <option value="'DNFBitBitv2', sans-serif">DNFBitBitv2</option>
-            <option value="'Giants-Inline', sans-serif">Giants-Inline</option>
-            <option value="'omyu_pretty', sans-serif">omyu_pretty</option>
-            <option value="'MBC1961GulimM', sans-serif">MBC1961GulimM</option>
-            <option value="'KimjungchulMyungjo-Bold', sans-serif">KimjungchulMyungjo-Bold</option>
-            <option value="'Ansungtangmyun-Bold', sans-serif">Ansungtangmyun-Bold</option>
-            <option value="'MYYeongnamnu', sans-serif">MYYeongnamnu</option>
+            <!-- Add other font options here -->
         </select>
     </div>
     <div>
         <label for="textSize">Text Size (px):</label>
         <input type="range" id="textSize" min="1" max="100" step="1" value="20" onchange="updateStyle()">
-        
     </div>
     <div>
         <label for="textBold">Bold:</label>
@@ -190,7 +58,6 @@
     <div>
         <label for="borderThickness">Border Thickness (px):</label>
         <input type="range" id="borderThickness" min="0" max="6" step="1" value="0" onchange="updateStyle()">
-        
     </div>
     <div>
         <label for="borderColor">Border Color:</label>
@@ -199,12 +66,10 @@
     <div class="slider-container">
         <label class="slider-label" for="shadowDistance">Shadow Distance:</label>
         <input type="range" id="shadowDistance" min="0" max="50" value="0" oninput="updateStyle()">
-        
     </div>
     <div class="slider-container">
         <label class="slider-label" for="shadowAngle">Shadow Angle:</label>
         <input type="range" id="shadowAngle" min="0" max="360" value="0" oninput="updateStyle()">
-        
     </div>
     <div>
         <label for="shadowBlur">Shadow Blur (px):</label>
@@ -221,19 +86,16 @@
 
     <script>
         function updateText() {
-            var textInput = document.getElementById("textInput").value;
-            document.getElementById("output").innerText = textInput;
+            document.getElementById("output").innerText = document.getElementById("textInput").value;
         }
 
         function changeFont() {
-            var selectedFont = document.getElementById("fontSelect").value;
-            document.getElementById("output").style.fontFamily = selectedFont;
-            updateStyle(); // Ensure styles are updated when the font changes
+            document.getElementById("output").style.fontFamily = document.getElementById("fontSelect").value;
+            updateStyle();
         }
 
         function updateStyle() {
             var output = document.getElementById("output");
-
             var textSize = document.getElementById("textSize").value;
             var textBold = document.getElementById("textBold").checked ? "bold" : "normal";
             var textItalic = document.getElementById("textItalic").checked ? "italic" : "normal";
@@ -279,7 +141,7 @@
             updateStyle();
         }
 
-        function calculateTextShadow(distance, angle, blur, color, alpha) {
+        function calculateTextShadow(distancefunction calculateTextShadow(distance, angle, blur, color, alpha) {
             var radians = (angle * Math.PI) / 180;
             var x = distance * Math.cos(radians);
             var y = distance * Math.sin(radians);
@@ -291,11 +153,9 @@
         }
 
         function generatePNG() {
-            html2canvas(document.body, {
-                width: document.getElementById("output").offsetWidth,
-                height: document.getElementById("output").offsetHeight,
+            html2canvas(document.getElementById("output"), {
                 scale: 2,
-                backgroundColor: null  // Ensure transparent background
+                backgroundColor: null
             }).then(canvas => {
                 var link = document.createElement('a');
                 link.href = canvas.toDataURL();
