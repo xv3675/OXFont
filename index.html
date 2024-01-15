@@ -10,25 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gasoek+One&family=Gowun+Batang&family=Nanum+Pen+Script&family=Single+Day&family=Song+Myung&display=swap" rel="stylesheet">
     <title>OXFONT</title>
     <style>
-        body {
-            font-family: 'Song Myung', serif;
-        }
-        #description {
-            color: black;
-            font-size: 16px;
-            text-decoration: none;
-        }
+        body { font-family: 'Song Myung', serif; }
+        #description { color: black; font-size: 16px; text-decoration: none; }
         #youtube { color: red; text-decoration: underline; }
         #chzzk { color: green; text-decoration: underline; }
         #afreeca { color: blue; text-decoration: underline; }
         #twitch { color: purple; text-decoration: underline; }
-        #output {
-            font-size: 20px;
-            font-family: 'Song Myung', serif;
-            text-align: center;
-            padding: 20px;
-            display: inline-block;
-        }
+        #output { font-size: 20px; font-family: 'Song Myung', serif; text-align: center; padding: 20px; display: inline-block; }
+        .color-section { margin-top: 10px; }
+        .slider-container { margin-top: 10px; }
     </style>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
@@ -47,8 +37,7 @@
     </div>
     <div>
         <label for="fontSelect">Select Font:</label>
-        <select id="fontSelect" onchange="changeFont()">
-            <option value="none" selected disabled hidden>None</option>
+        <select id="fontSelect" onchange="updateStyle()">
             <option value="'Black Han Sans', sans-serif">Black Han Sans</option>
             <option value="'Gasoek One', sans-serif">Gasoek One</option>
             <option value="'Gowun Batang', serif">Gowun Batang</option>
@@ -57,7 +46,7 @@
             <option value="'Song Myung', serif">Song Myung</option>
         </select>
     </div>
-    <div>
+    <div class="slider-container">
         <label for="textSize">Text Size (px):</label>
         <input type="range" id="textSize" min="1" max="100" step="1" value="20" onchange="updateStyle()">
         <span id="textSizeValue">20</span>
@@ -81,47 +70,48 @@
             <option value="gradient">Gradient</option>
         </select>
     </div>
-    <div id="solidColorSection">
+    <div class="color-section" id="solidColorSection">
         <label for="textColor">Text Color:</label>
         <input type="color" id="textColor" onchange="updateStyle()">
     </div>
-    <div id="gradientColorSection" style="display: none;">
+    <div class="color-section" id="gradientColorSection" style="display: none;">
         <label for="startColor">Start Color:</label>
         <input type="color" id="startColor" onchange="updateStyle()">
         <label for="endColor">End Color:</label>
         <input type="color" id="endColor" onchange="updateStyle()">
+        <label for="backgroundOpacity">Background Opacity:</label>
+        <input type="range" id="backgroundOpacity" min="0" max="1" step="0.01" value="1" onchange="updateStyle()">
     </div>
-    <div>
+    <div class="slider-container">
         <label for="borderThickness">Border Thickness (px):</label>
         <input type="range" id="borderThickness" min="0" max="6" step="1" value="0" onchange="updateStyle()">
         <span id="borderThicknessValue">0</span>
     </div>
-    <div>
+    <div class="color-section">
         <label for="borderColor">Border Color:</label>
         <input type="color" id="borderColor" onchange="updateStyle()">
     </div>
     <div class="slider-container">
-        <label class="slider-label" for="shadowDistance">Shadow Distance:</label>
+        <label for="shadowDistance">Shadow Distance:</label>
         <input type="range" id="shadowDistance" min="0" max="50" value="0" oninput="updateStyle()">
         <span id="shadowDistanceValue">0</span>
     </div>
     <div class="slider-container">
-        <label class="slider-label" for="shadowAngle">Shadow Angle:</label>
+        <label for="shadowAngle">Shadow Angle:</label>
         <input type="range" id="shadowAngle" min="0" max="360" value="0" oninput="updateStyle()">
         <span id="shadowAngleValue">0Â°</span>
     </div>
     <div>
         <label for="shadowBlur">Shadow Blur (px):</label>
         <input type="number" id="shadowBlur" step="1" value="0" onchange="updateStyle()">
-    </div>
-    <div>
+    </div<div class="color-section">
         <label for="shadowColor">Shadow Color:</label>
         <input type="color" id="shadowColor" onchange="updateStyle()">
         <label for="shadowColorAlpha">Shadow Color Alpha:</label>
         <input type="range" id="shadowColorAlpha" min="0" max="1" step="0.01" value="0" onchange="updateStyle()">
     </div>
-    <div>
-        <labelfor="gradientAngle" style="display:none;">Gradient Angle:</label>
+    <div class="slider-container">
+        <label for="gradientAngle" style="display:none;">Gradient Angle:</label>
         <input type="range" id="gradientAngle" min="0" max="360" value="0" oninput="updateStyle()">
         <span id="gradientAngleValue" style="display:none;">0Â°</span>
     </div>
@@ -130,12 +120,6 @@
         function updateText() {
             var textInput = document.getElementById("textInput").value;
             document.getElementById("output").innerText = textInput;
-        }
-
-        function changeFont() {
-            var selectedFont = document.getElementById("fontSelect").value;
-            document.getElementById("output").style.fontFamily = selectedFont;
-            updateStyle(); // Ensure styles are updated when the font changes
         }
 
         function updateStyle() {
@@ -161,15 +145,14 @@
             if (document.getElementById("colorType").value === "solid") {
                 output.style.color = document.getElementById("textColor").value;
                 output.style.backgroundColor = "transparent";
-                document.getElementById("gradientAngle").style.display = "none";
-                document.getElementById("gradientAngleValue").style.display = "none";
+                document.getElementById("gradientColorSection").style.display = "none";
             } else {
+                var gradientOpacity = document.getElementById("backgroundOpacity").value;
                 var gradient = `linear-gradient(${shadowAngle}deg, ${document.getElementById("startColor").value}, ${document.getElementById("endColor").value})`;
-                output.style.background = gradient;
+                output.style.background = `${gradient}, rgba(255,255,255,${1-gradientOpacity})`;
                 output.style.backgroundClip = "text";
                 output.style.color = "transparent";
-                document.getElementById("gradientAngle").style.display = "block";
-                document.getElementById("gradientAngleValue").style.display = "block";
+                document.getElementById("gradientColorSection").style.display = "block";
             }
 
             output.style.webkitTextStrokeWidth = `${borderThickness}px`;
