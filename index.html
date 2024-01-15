@@ -291,17 +291,19 @@
         }
 
         function generatePNG() {
-            html2canvas(document.body, {
-                width: document.getElementById("output").offsetWidth,
-                height: document.getElementById("output").offsetHeight,
-                scale: 2
-            }).then(canvas => {
-                var link = document.createElement('a');
-                link.href = canvas.toDataURL();
-                link.download = 'text_image.png';
-                link.click();
-            });
-        }
+    var output = document.getElementById("output");
+    html2canvas(output, {
+        width: output.offsetWidth,
+        height: output.offsetHeight,
+        scale: 2,
+        backgroundColor: null  // This line makes the background transparent
+    }).then(canvas => {
+        var link = document.createElement('a');
+        link.href = canvas.toDataURL("image/png");
+        link.download = 'text_image.png';
+        link.click();
+    });
+}
                 document.addEventListener("DOMContentLoaded", function () {
             updateText();
             updateStyle();
