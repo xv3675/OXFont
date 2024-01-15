@@ -254,7 +254,7 @@
             output.style.color = document.getElementById("textColor").value;
             output.style.backgroundColor = "transparent";
 
-            output.style.webkitTextStrokeWidth= borderThickness + "px";
+            output.style.webkitTextStrokeWidth = borderThickness + "px";
             output.style.webkitTextStrokeColor = borderColor;
 
             output.style.textShadow = calculateTextShadow(
@@ -294,7 +294,8 @@
             html2canvas(document.body, {
                 width: document.getElementById("output").offsetWidth,
                 height: document.getElementById("output").offsetHeight,
-                scale: 2
+                scale: 2,
+                backgroundColor: null  // Ensure transparent background
             }).then(canvas => {
                 var link = document.createElement('a');
                 link.href = canvas.toDataURL();
