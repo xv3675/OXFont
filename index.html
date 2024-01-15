@@ -296,7 +296,7 @@
         width: output.offsetWidth,
         height: output.offsetHeight,
         scale: 2,
-        backgroundColor: null  // This line makes the background transparent
+        backgroundColor: "rgba(0, 0, 0, 0)"  // Set background color to fully transparent
     }).then(canvas => {
         var link = document.createElement('a');
         link.href = canvas.toDataURL("image/png");
