@@ -290,20 +290,7 @@
                 parseInt(color.substring(5, 7), 16) + "," + alpha + ")";
         }
 
-        function generatePNG() {
-    var output = document.getElementById("output");
-    html2canvas(output, {
-        width: output.offsetWidth,
-        height: output.offsetHeight,
-        scale: 2,
-        backgroundColor: "rgba(0, 0, 0, 0)"  // Set background color to fully transparent
-    }).then(canvas => {
-        var link = document.createElement('a');
-        link.href = canvas.toDataURL("image/png");
-        link.download = 'text_image.png';
-        link.click();
-    });
-}
+        
                 document.addEventListener("DOMContentLoaded", function () {
             updateText();
             updateStyle();
