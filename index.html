@@ -26,52 +26,42 @@
             <option value="none" selected disabled hidden>None</option>
             <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
             <option value="'yg-jalnan', sans-serif">yg-jalnan</option>
-            <option value="'Orbit-Regular', serif">Orbit-Regular</option>
-            <option value="'JalnanGothic', sans-serif">JalnanGothic</option>
-            <option value="'DNFForgedBlade', sans-serif">DNFForgedBlade</option>
-            <option value="'PartialSansKR-Regular', serif">PartialSansKR-Regular</option>
-            <option value="'DNFBitBitv2', sans-serif">DNFBitBitv2</option>
-            <option value="'Giants-Inline', sans-serif">Giants-Inline</option>
-            <option value="'omyu_pretty', sans-serif">omyu_pretty</option>
-            <option value="'MBC1961GulimM', sans-serif">MBC1961GulimM</option>
-            <option value="'KimjungchulMyungjo-Bold', sans-serif">KimjungchulMyungjo-Bold</option>
-            <option value="'Ansungtangmyun-Bold', sans-serif">Ansungtangmyun-Bold</option>
-            <option value="'MYYeongnamnu', sans-serif">MYYeongnamnu</option>
+            <!-- Add other font options here -->
         </select>
     </div>
     <div>
         <label for="textSize">Text Size (px):</label>
-        <input type="range" id="textSize" min="1" max="100" step="1" value="20" oninput="updateStyle()">
+        <input type="range" id="textSize" min="1" max="100" step="1" value="20" onchange="updateStyle()">
     </div>
     <div>
         <label for="textBold">Bold:</label>
-        <input type="checkbox" id="textBold" oninput="updateStyle()">
+        <input type="checkbox" id="textBold" onchange="updateStyle()">
     </div>
     <div>
         <label for="textItalic">Italic:</label>
-        <input type="checkbox" id="textItalic" oninput="updateStyle()">
+        <input type="checkbox" id="textItalic" onchange="updateStyle()">
     </div>
     <div>
         <label for="textUnderline">Underline:</label>
-        <input type="checkbox" id="textUnderline" oninput="updateStyle()">
+        <input type="checkbox" id="textUnderline" onchange="updateStyle()">
     </div>
     <div>
         <label for="colorType">Color Type:</label>
-        <select id="colorType" oninput="updateTextColor()">
+        <select id="colorType" onchange="updateTextColor()">
             <option value="solid">Solid Color</option>
         </select>
     </div>
     <div id="solidColorSection">
         <label for="textColor">Text Color:</label>
-        <input type="color" id="textColor" oninput="updateStyle()">
+        <input type="color" id="textColor" onchange="updateStyle()">
     </div>
     <div>
         <label for="borderThickness">Border Thickness (px):</label>
-        <input type="range" id="borderThickness" min="0" max="6" step="1" value="0" oninput="updateStyle()">
+        <input type="range" id="borderThickness" min="0" max="6" step="1" value="0" onchange="updateStyle()">
     </div>
     <div>
         <label for="borderColor">Border Color:</label>
-        <input type="color" id="borderColor" oninput="updateStyle()">
+        <input type="color" id="borderColor" onchange="updateStyle()">
     </div>
     <div class="slider-container">
         <label class="slider-label" for="shadowDistance">Shadow Distance:</label>
@@ -83,38 +73,35 @@
     </div>
     <div>
         <label for="shadowBlur">Shadow Blur (px):</label>
-        <input type="number" id="shadowBlur" step="1" value="0" oninput="updateStyle()">
+        <input type="number" id="shadowBlur" step="1" value="0" onchange="updateStyle()">
     </div>
     <div>
         <label for="shadowColor">Shadow Color:</label>
-        <input type="color" id="shadowColor" oninput="updateStyle()">
+        <input type="color" id="shadowColor" onchange="updateStyle()">
         <label for="shadowColorAlpha">Shadow Color Alpha:</label>
-        <input type="range" id="shadowColorAlpha" min="0" max="1" step="0.01" value="0" oninput="updateStyle()">
+        <input type="range" id="shadowColorAlpha" min="0" max="1" step="0.01" value="0" onchange="updateStyle()">
     </div>
     <div id="output">Sample Text</div>
     <button onclick="generatePNG()">Generate PNG</button>
 
     <script>
         function updateText() {
-            var textInput = document.getElementById("textInput").value;
-            document.getElementById("output").innerText = textInput;
+            document.getElementById("output").innerText = document.getElementById("textInput").value;
         }
 
         function changeFont() {
-            var selectedFont = document.getElementById("fontSelect").value;
-            document.getElementById("output").style.fontFamily = selectedFont;
+            document.getElementById("output").style.fontFamily = document.getElementById("fontSelect").value;
             updateStyle();
         }
 
         function updateStyle() {
             var output = document.getElementById("output");
-
             var textSize = document.getElementById("textSize").value;
             var textBold = document.getElementById("textBold").checked ? "bold" : "normal";
             var textItalic = document.getElementById("textItalic").checked ? "italic" : "normal";
             var textUnderline = document.getElementById("textUnderline").checked ? "underline" : "none";
             var borderColor = document.getElementById("borderColor").value;
-            var bordervar borderThickness = document.getElementById("borderThickness").value;
+            var borderThickness = document.getElementById("borderThickness").value;
             var shadowDistance = document.getElementById("shadowDistance").value;
             var shadowAngle = document.getElementById("shadowAngle").value;
             var shadowBlur = document.getElementById("shadowBlur").value;
@@ -154,7 +141,7 @@
             updateStyle();
         }
 
-        function calculateTextShadow(distance, angle, blur, color, alpha) {
+        function calculateTextShadow(distancefunction calculateTextShadow(distance, angle, blur, color, alpha) {
             var radians = (angle * Math.PI) / 180;
             var x = distance * Math.cos(radians);
             var y = distance * Math.sin(radians);
@@ -166,7 +153,10 @@
         }
 
         function generatePNG() {
-            html2canvas(document.getElementById("output")).then(canvas => {
+            html2canvas(document.getElementById("output"), {
+                scale: 2,
+                backgroundColor: null
+            }).then(canvas => {
                 var link = document.createElement('a');
                 link.href = canvas.toDataURL();
                 link.download = 'text_image.png';
