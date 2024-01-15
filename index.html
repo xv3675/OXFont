@@ -108,7 +108,7 @@
     <div class="slider-container">
         <label class="slider-label" for="shadowAngle">Shadow Angle:</label>
         <input type="range" id="shadowAngle" min="0" max="360" value="0" oninput="updateStyle()">
-        <span id="shadowAngleValue">0Â°</span>
+        <span id="shadowAngleValue">0ÃÂ°</span>
     </div>
     <div>
         <label for="shadowBlur">Shadow Blur (px):</label>
@@ -121,9 +121,9 @@
         <input type="range" id="shadowColorAlpha" min="0" max="1" step="0.01" value="0" onchange="updateStyle()">
     </div>
     <div>
-        <labelfor="gradientAngle" style="display:none;">Gradient Angle:</label>
+        <label for="gradientAngle" style="display:none;">Gradient Angle:</label>
         <input type="range" id="gradientAngle" min="0" max="360" value="0" oninput="updateStyle()">
-        <span id="gradientAngleValue" style="display:none;">0Â°</span>
+        <span id="gradientAngleValue" style="display:none;">0ÃÂ°</span>
     </div>
     <div id="output">Sample Text</div>
     <button onclick="generatePNG()">Generate PNG</button><script>
@@ -179,8 +179,8 @@
             document.getElementById("textSizeValue").innerText = textSize;
             document.getElementById("borderThicknessValue").innerText = borderThickness;
             document.getElementById("shadowDistanceValue").innerText = shadowDistance;
-            document.getElementById("shadowAngleValue").innerText = shadowAngle + "Â°";
-            document.getElementById("gradientAngleValue").innerText = shadowAngle + "Â°";
+            document.getElementById("shadowAngleValue").innerText = shadowAngle + "ÃÂ°";
+            document.getElementById("gradientAngleValue").innerText = shadowAngle + "ÃÂ°";
         }
 
         function updateTextColor() {
@@ -203,7 +203,7 @@
             var textInput = document.getElementById("textInput").value;
             var outputDiv = document.getElementById("output");
 
-            html2canvas(outputDiv).then(function(canvas) {
+            html2canvas(outputDiv, { backgroundColor: null }).then(function(canvas) {
                 var img = canvas.toDataURL("image/png");
                 var link = document.createElement('a');
                 link.href = img;
