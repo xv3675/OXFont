@@ -302,19 +302,7 @@
                 link.click();
             });
         }
-function generatePNG() {
-    html2canvas(document.getElementById("output"), {
-        width: document.getElementById("output").offsetWidth,
-        height: document.getElementById("output").offsetHeight,
-        scale: 2
-    }).then(canvas => {
-        var link = document.createElement('a');
-        link.href = canvas.toDataURL();
-        link.download = 'text_image.png';
-        link.click();
-    });
-}
-        document.addEventListener("DOMContentLoaded", function () {
+                document.addEventListener("DOMContentLoaded", function () {
             updateText();
             updateStyle();
         });
