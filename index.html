@@ -89,7 +89,10 @@
         padding: 20px;
         display: inline-block;
         margin-bottom: 20px;
-        position: relative;
+        position: relative; 
+        background-image: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2)); /* 이 부분 추가 */
+        -webkit-background-clip: text;
+        color: transparent;
     }
 
     #output:before {
@@ -101,9 +104,7 @@
         right: 0;
         bottom: 0;
         z-index: -1;
-        background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
-        -webkit-background-clip: text;
-        color: transparent;
+        background: none; /* 이 부분 추가 */
     }
     </style>
 
