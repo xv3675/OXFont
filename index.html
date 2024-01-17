@@ -82,6 +82,31 @@
         #generateButton:hover {
             background-color: #45a049;
         }
+        
+    #output {
+        font-size: 30px;
+        text-align: center;
+        padding: 20px;
+        display: inline-block;
+        margin-bottom: 20px;
+        background: linear-gradient(to right, #000, #fff);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    #output:before {
+        content: attr(data-text);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background: linear-gradient(to right, #000, #fff);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
     </style>
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -145,24 +170,24 @@
         }
 
         function updateStyle() {
-            var output = document.getElementById("output");
+    var output = document.getElementById("output");
 
-            var textSize = document.getElementById("textSize").value;
-            var gradientDirection = document.getElementById("gradientDirection").value;
-            var gradientColor1 = document.getElementById("gradientColor1").value;
-            var gradientColor2 = document.getElementById("gradientColor2").value;
-            var borderThickness = document.getElementById("borderThickness").value;
-            var borderColor = document.getElementById("borderColor").value;
+    var textSize = document.getElementById("textSize").value;
+    var gradientDirection = document.getElementById("gradientDirection").value;
+    var gradientColor1 = document.getElementById("gradientColor1").value;
+    var gradientColor2 = document.getElementById("gradientColor2").value;
+    var borderThickness = document.getElementById("borderThickness").value;
+    var borderColor = document.getElementById("borderColor").value;
 
-            output.style.fontSize = textSize + "px";
-            output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
-            output.style.webkitBackgroundClip = "text";
-            output.style.color = "transparent";
+    output.style.fontSize = textSize + "px";
+    output.style.position = "relative";  // ì¶ê°ë ë¶ë¶
+    output.style.color = "transparent";  // ì¶ê°ë ë¶ë¶
 
-            output.style.webkitTextStrokeWidth = borderThickness + "px";
-            output.style.webkitTextStrokeColor = borderColor;
-        }
+    output.setAttribute("data-text", document.getElementById("textInput").value);  // ì¶ê°ë ë¶ë¶
 
+    output.style.webkitTextStrokeWidth = borderThickness + "px";
+    output.style.webkitTextStrokeColor = borderColor;
+}
         function generatePNG() {
             var output = document.getElementById("output");
             html2canvas(output, {
