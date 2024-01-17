@@ -5,136 +5,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="This site was created for YouTube, Chzzk, Afreeca TV, Twitch streamer OhxioN, and strictly prohibits its use outside of its use.">
+    <meta name="description" content="This site was created for YouTube, Chzzk, Afreeca TV, Twitch streamer OhxioN, and strictly prohibits its use outside of its use.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=GapyeongHanseokbong-Bold&family=yg-jalnan&family=Orbit-Regular&family=JalnanGothic&family=DNFForgedBlade:wght@300;500;700&family=PartialSansKR-Regular&family=DNFBitBitv2&family=Giants-Inline&family=omyu_pretty&family=MBC1961GulimM&family=KimjungchulMyungjo-Bold&family=Ansungtangmyun-Bold&family=MYYeongnamnu&display=swap" rel="stylesheet">
 
     <style>
-        @font-face {
-            font-family: 'GapyeongHanseokbong-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/GapyeongHanseokbong-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'yg-jalnan';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Orbit-Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'JalnanGothic';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 300;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Light.otf') format('opentype');
-        }
-
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 500;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf') format('opentype');
-        }
-
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 700;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Bold.otf') format('opentype');
-        }
-
-        @font-face {
-            font-family: 'PartialSansKR-Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'DNFBitBitv2';
-            font-style: normal;
-            font-weight: 400;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf') format('opentype');
-        }
-
-        @font-face {
-            font-family: 'Giants-Inline';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'omyu_pretty';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'MBC1961GulimM';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'KimjungchulMyungjo-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Ansungtangmyun-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun-Bold.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'MYYeongnamnu';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYYeongnamnu.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-
         body {
-            font-family: 'Song Myung', serif;
+            font-family: 'MYYeongnamnu', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        #controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        select,
+        input[type="color"],
+        input[type="range"] {
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         #output {
-            font-size: 20px;
-            font-family: 'Song Myung', serif;
+            font-size: 30px;
             text-align: center;
             padding: 20px;
             display: inline-block;
             background: linear-gradient(to right, #000, #fff);
             -webkit-background-clip: text;
             color: transparent;
+            margin-bottom: 20px;
         }
 
-        #gradientColor1 {
-            margin-right: 10px;
+        #generateButton {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        #gradientColor2 {
-            margin-left: 10px;
+        #generateButton:hover {
+            background-color: #45a049;
         }
     </style>
 
@@ -142,19 +73,12 @@
 </head>
 
 <body>
-    <div>
+    <div id="controls">
         <label for="textInput">Enter Text:</label>
         <textarea id="textInput" oninput="updateText()"></textarea>
-    </div>
-    <div>
-        <button onclick="toggleBold()">Bold</button>
-        <button onclick="toggleItalic()">Italic</button>
-        <button onclick="toggleUnderline()">Underline</button>
-    </div>
-    <div>
+
         <label for="fontSelect">Select Font:</label>
         <select id="fontSelect" onchange="changeFont()">
-            <option value="none" selected disabled hidden>None</option>
             <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
             <option value="'yg-jalnan', sans-serif">yg-jalnan</option>
             <option value="'Orbit-Regular', sans-serif">Orbit-Regular</option>
@@ -171,27 +95,28 @@
             <option value="'Ansungtangmyun-Bold', sans-serif">Ansungtangmyun-Bold</option>
             <option value="'MYYeongnamnu', sans-serif">MYYeongnamnu</option>
         </select>
-    </div>
-    <div>
+
         <label for="textSize">Text Size (px):</label>
-        <input type="range" id="textSize" min="1" max="100" step="1" value="20" onchange="updateStyle()">
-    </div>
-    <div>
+        <input type="range" id="textSize" min="1" max="100" step="1" value="30" onchange="updateStyle()">
+
+        <label for="gradientDirection">Gradient Direction:</label>
+        <input type="range" id="gradientDirection" min="0" max="360" step="1" value="0" onchange="updateStyle()">
+
         <label for="gradientColor1">Gradient Color 1:</label>
         <input type="color" id="gradientColor1" onchange="updateStyle()">
+
         <label for="gradientColor2">Gradient Color 2:</label>
         <input type="color" id="gradientColor2" onchange="updateStyle()">
-    </div>
-    <div>
+
         <label for="borderThickness">Border Thickness (px):</label>
-        <input type="range" id="borderThickness" min="0" max="6" step="1" value="0" onchange="updateStyle()">
-    </div>
-    <div>
+        <input type="range" id="borderThickness" min="0" max="6" step="1" value="2" onchange="updateStyle()">
+
         <label for="borderColor">Border Color:</label>
         <input type="color" id="borderColor" onchange="updateStyle()">
     </div>
+
     <div id="output">Sample Text</div>
-    <button onclick="generatePNG()">Generate PNG</button>
+    <button id="generateButton" onclick="generatePNG()">Generate PNG</button>
 
     <script>
         function updateText() {
@@ -200,27 +125,9 @@
             updateStyle();
         }
 
-        function toggleBold() {
-            var output = document.getElementById("output");
-            output.style.fontWeight = (output.style.fontWeight === "bold") ? "normal" : "bold";
-            updateStyle();
-        }
-
-        function toggleItalic() {
-            var output = document.getElementById("output");
-            output.style.fontStyle = (output.style.fontStyle === "italic") ? "normal" : "italic";
-            updateStyle();
-        }
-
-        function toggleUnderline() {
-            var output = document.getElementById("output");
-            output.style.textDecoration = (output.style.textDecoration === "underline") ? "none" : "underline";
-            updateStyle();
-        }
-
         function changeFont() {
             var selectedFont = document.getElementById("fontSelect").value;
-            document.getElementById("output").style.font = selectedFont;
+            document.getElementById("output").style.fontFamily = selectedFont;
             updateStyle();
         }
 
@@ -228,15 +135,17 @@
             var output = document.getElementById("output");
 
             var textSize = document.getElementById("textSize").value;
+            var gradientDirection = document.getElementById("gradientDirection").value;
             var gradientColor1 = document.getElementById("gradientColor1").value;
             var gradientColor2 = document.getElementById("gradientColor2").value;
             var borderThickness = document.getElementById("borderThickness").value;
             var borderColor = document.getElementById("borderColor").value;
 
             output.style.fontSize = textSize + "px";
-            output.style.backgroundImage = `linear-gradient(to right, ${gradientColor1}, ${gradientColor2})`;
+            output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
             output.style.webkitBackgroundClip = "text";
             output.style.color = "transparent";
+
             output.style.webkitTextStrokeWidth = borderThickness + "px";
             output.style.webkitTextStrokeColor = borderColor;
         }
@@ -258,6 +167,7 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             updateText();
+            changeFont(); // Added to initialize font correctly
             updateStyle();
         });
     </script>
