@@ -65,28 +65,6 @@
             text-align: center;
             padding: 20px;
             display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        #generateButton {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #generateButton:hover {
-            background-color: #45a049;
-        }
-
-        #output {
-            font-size: 30px;
-            text-align: center;
-            padding: 20px;
-            display: inline-block;
-            margin-bottom: 20px;
             position: relative;
         }
 
@@ -103,6 +81,19 @@
             -webkit-background-clip: text;
             color: transparent;
         }
+
+        #generateButton {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #generateButton:hover {
+            background-color: #45a049;
+        }
     </style>
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -113,7 +104,7 @@
         <div id="leftSection">
             <div id="controls">
                 <label for="textInput">Enter Text:</label>
-                <textarea id="textInput" oninput="updateText()">Hi Hi</textarea>
+                <textarea id="textInput" oninput="updateText()">Your text here</textarea>
 
                 <label for="fontSelect">Select Font:</label>
                 <select id="fontSelect" onchange="changeFont()">
@@ -149,14 +140,15 @@
     </div>
 
     <div id="outputSection">
-        <div id="output" data-text="Your Text Here">Your Text Here</div>
+        <div id="output" data-text="Your text here"></div>
     </div>
 
     <script>
         function updateText() {
             var textInput = document.getElementById("textInput").value;
-            document.getElementById("output").innerText = textInput;
-            updateStyle();}
+            document.getElementById("output").setAttribute("data-text", textInput);
+            updateStyle();
+        }
 
         function changeFont() {
             var selectedFont = document.getElementById("fontSelect").value;
@@ -174,22 +166,25 @@
             var borderThickness = document.getElementById("borderThickness").value;
             var borderColor = document.getElementById("borderColor").value;
 
-            output.style.fontSize = textSize + "px";
+            output.styleoutput.style.fontSize = textSize + "px";
             output.style.setProperty('--gradient-color-1', gradientColor1);
             output.style.setProperty('--gradient-color-2', gradientColor2);
+            output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
             output.style.webkitTextStrokeWidth = borderThickness + "px";
             output.style.webkitTextStrokeColor = borderColor;
         }
 
         function generatePNG() {
             var output = document.getElementById("output");
-
+            
+            // Create a div to clone the styled text for HTML2Canvas
             var textDiv = document.createElement('div');
             textDiv.style.color = window.getComputedStyle(output).color;
             textDiv.style.fontSize = window.getComputedStyle(output).fontSize;
             textDiv.style.fontFamily = window.getComputedStyle(output).fontFamily;
-            textDiv.innerText = output.innerText;
-
+            textDiv.innerText = output.getAttribute("data-text");
+            
+            // Use HTML2Canvas to capture the div with styled text
             html2canvas(textDiv, {
                 useCORS: true,
                 backgroundColor: null
