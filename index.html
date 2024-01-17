@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This site was created for YouTube, Chzzk, Afreeca TV, Twitch streamer OhxioN, and strictly prohibits its use outside of its use.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=GapyeongHanseokbong-Bold&family=yg-jalnan&family=Orbit-Regular&family=JalnanGothic&family=DNFForgedBlade:wght@300;500;700&family=PartialSansKR-Regular&family=DNFBitBitv2&family=Giants-Inline&family=omyu_pretty&family=MBC1961GulimM&family=KimjungchulMyungjo-Bold&family=Ansungtangmyun-Bold&family=MYYeongnamnu&display=swap" rel="stylesheet">
@@ -63,10 +62,6 @@
             font-size: 30px;
             text-align: center;
             padding: 20px;
-            display: inline-block;
-            background: linear-gradient(to right, #000, #fff);
-            -webkit-background-clip: text;
-            color: transparent;
             margin-bottom: 20px;
         }
 
@@ -102,24 +97,12 @@
 
                 <label for="gradientDirection">Gradient Direction:</label>
                 <input type="range" id="gradientDirection" min="0" max="360" step="1" value="0" onchange="updateStyle()">
-
-                <label for="gradientColor1">Gradient Color 1:</label>
-                <input type="color" id="gradientColor1" onchange="updateStyle()">
-
-                <label for="gradientColor2">Gradient Color 2:</label>
-                <input type="color" id="gradientColor2" onchange="updateStyle()">
             </div>
         </div>
         <div id="rightSection">
             <div id="controls">
                 <label for="textSize">Text Size (px):</label>
                 <input type="range" id="textSize" min="70" max="170" step="1" value="100" onchange="updateStyle()">
-
-                <label for="borderThickness">Border Thickness (px):</label>
-                <input type="range" id="borderThickness" min="0" max="10" step="1" value="4" onchange="updateStyle()">
-
-                <label for="borderColor">Border Color:</label>
-                <input type="color" id="borderColor" onchange="updateStyle()">
             </div>
             <div>
                 <button id="generateButton" onclick="generatePNG()">Generate PNG</button>
@@ -128,7 +111,7 @@
     </div>
 
     <div id="outputSection">
-        <div id="output">Ã­ÂÂÃ¬ÂÂ´Ã­ÂÂÃ¬ÂÂ´</div>
+        <div id="output">Text Output</div>
     </div>
 
     <script>
@@ -149,18 +132,11 @@
 
             var textSize = document.getElementById("textSize").value;
             var gradientDirection = document.getElementById("gradientDirection").value;
-            var gradientColor1 = document.getElementById("gradientColor1").value;
-            var gradientColor2 = document.getElementById("gradientColor2").value;
-            var borderThickness = document.getElementById("borderThickness").value;
-            var borderColor = document.getElementById("borderColor").value;
 
             output.style.fontSize = textSize + "px";
-            output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
+            output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, #ff0000, #00ff00)`;
             output.style.webkitBackgroundClip = "text";
             output.style.color = "transparent";
-
-            output.style.webkitTextStrokeWidth = borderThickness + "px";
-            output.style.webkitTextStrokeColor = borderColor;
         }
 
         function generatePNG() {
