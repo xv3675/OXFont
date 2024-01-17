@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This site was created for YouTube, Chzzk, Afreeca TV, Twitch streamer OhxioN, and strictly prohibits its use outside of its use.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=GapyeongHanseokbong-Bold&family=yg-jalnan&family=Orbit-Regular&family=JalnanGothic&family=DNFForgedBlade:wght@300;500;700&family=PartialSansKR-Regular&family=DNFBitBitv2&family=Giants-Inline&family=omyu_pretty&family=MBC1961GulimM&family=KimjungchulMyungjo-Bold&family=Ansungtangmyun-Bold&family=MYYeongnamnu&display=swap" rel="stylesheet">
@@ -65,21 +64,21 @@
             text-align: center;
             padding: 20px;
             display: inline-block;
+            color: #ffffff; /* Set text color */
             margin-bottom: 20px;
-            position: relative;
         }
 
-        #output::before {
-            content: attr(data-text);
-            display: blockposition: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
-            -webkit-background-clip: text;
-            color: transparent;
+        #generateButton {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #generateButton:hover {
+            background-color: #45a049;
         }
     </style>
 
@@ -154,8 +153,6 @@
             var borderColor = document.getElementById("borderColor").value;
 
             output.style.fontSize = textSize + "px";
-            output.style.setProperty('--gradient-color-1', gradientColor1);
-            output.style.setProperty('--gradient-color-2', gradientColor2);
             output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
             output.style.webkitTextStrokeWidth = borderThickness + "px";
             output.style.webkitTextStrokeColor = borderColor;
@@ -166,7 +163,6 @@
             var textInput = document.getElementById("textInput").value;
 
             var textDiv = document.createElement('div');
-            textDiv.style.color = window.getComputedStyle(output).color;
             textDiv.style.fontSize = window.getComputedStyle(output).fontSize;
             textDiv.style.fontFamily = window.getComputedStyle(output).fontFamily;
             textDiv.innerText = textInput;
