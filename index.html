@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This site was created for YouTube, Chzzk, Afreeca TV, Twitch streamer OhxioN, and strictly prohibits its use outside of its use.">
+    <meta name="description"
+        content="This site was created for YouTube, Chzzk, Afreeca TV, Twitch streamer OhxioN, and strictly prohibits its use outside of its use.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=GapyeongHanseokbong-Bold&family=yg-jalnan&family=Orbit-Regular&family=JalnanGothic&family=DNFForgedBlade:wght@300;500;700&family=PartialSansKR-Regular&family=DNFBitBitv2&family=Giants-Inline&family=omyu_pretty&family=MBC1961GulimM&family=KimjungchulMyungjo-Bold&family=Ansungtangmyun-Bold&family=MYYeongnamnu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=GapyeongHanseokbong-Bold&family=yg-jalnan&family=Orbit-Regular&family=JalnanGothic&family=DNFForgedBlade:wght@300;500;700&family=PartialSansKR-Regular&family=DNFBitBitv2&family=Giants-Inline&family=omyu_pretty&family=MBC1961GulimM&family=KimjungchulMyungjo-Bold&family=Ansungtangmyun-Bold&family=MYYeongnamnu&display=swap"
+        rel="stylesheet">
 
     <style>
         body {
@@ -20,7 +22,6 @@
             justify-content: center;
             height: 100vh;
             background-color: #f8f8f8;
-            line-height: 1.5;
         }
 
         #controls {
@@ -38,7 +39,8 @@
 
         select,
         input[type="color"],
-        input[type="range"] {
+        input[type="range"],
+        textarea {
             margin-bottom: 15px;
             padding: 8px;
             border: 1px solid #ccc;
@@ -81,7 +83,20 @@
         <label for="fontSelect">Select Font:</label>
         <select id="fontSelect" onchange="changeFont()">
             <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
-            <!-- Add other font options here -->
+            <option value="'yg-jalnan', sans-serif">yg-jalnan</option>
+            <option value="'Orbit-Regular', sans-serif">Orbit-Regular</option>
+            <option value="'JalnanGothic', sans-serif">JalnanGothic</option>
+            <option value="'DNFForgedBlade-Light', sans-serif">DNFForgedBlade-Light</option>
+            <option value="'DNFForgedBlade-Medium', sans-serif">DNFForgedBlade-Medium</option>
+            <option value="'DNFForgedBlade-Bold', sans-serif">DNFForgedBlade-Bold</option>
+            <option value="'PartialSansKR-Regular', sans-serif">PartialSansKR-Regular</option>
+            <option value="'DNFBitBitv2', sans-serif">DNFBitBitv2</option>
+            <option value="'Giants-Inline', sans-serif">Giants-Inline</option>
+            <option value="'omyu_pretty', sans-serif">omyu_pretty</option>
+            <option value="'MBC1961GulimM', sans-serif">MBC1961GulimM</option>
+            <option value="'KimjungchulMyungjo-Bold', sans-serif">KimjungchulMyungjo-Bold</option>
+            <option value="'Ansungtangmyun-Bold', sans-serif">Ansungtangmyun-Bold</option>
+            <option value="'MYYeongnamnu', sans-serif">MYYeongnamnu</option>
         </select>
 
         <label for="textSize">Text Size (px):</label>
@@ -101,6 +116,7 @@
 
         <label for="borderColor">Border Color:</label>
         <input type="color" id="borderColor" onchange="updateStyle()">
+
     </div>
 
     <div id="output">íì´íì´</div>
@@ -130,7 +146,8 @@
             var borderColor = document.getElementById("borderColor").value;
 
             output.style.fontSize = textSize + "px";
-            output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;output.style.webkitBackgroundClip = "text";
+            output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
+            output.style.webkitBackgroundClip = "text";
             output.style.color = "transparent";
 
             output.style.webkitTextStrokeWidth = borderThickness + "px";
