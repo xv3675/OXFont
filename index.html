@@ -25,7 +25,8 @@
             flex: 1;
         }
 
-        #leftSection, #rightSection {
+        #leftSection,
+        #rightSection {
             flex: 1;
             padding: 20px;
         }
@@ -64,29 +65,13 @@
             text-align: center;
             padding: 20px;
             display: inline-block;
-            background: linear-gradient(to right, #000, #fff);
-            -webkit-background-clip: text;
-            color: transparent;
             margin-bottom: 20px;
-        }
-
-        #generateButton {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #generateButton:hover {
-            background-color: #45a049;
+            position: relative;
         }
 
         #output::before {
             content: attr(data-text);
-            display: block;
-            position: absolute;
+            display: blockposition: absolute;
             top: 0;
             left: 0;
             right: 0;
@@ -168,7 +153,7 @@
             var borderThickness = document.getElementById("borderThickness").value;
             var borderColor = document.getElementById("borderColor").value;
 
-            output.style.fontSize= textSize + "px";
+            output.style.fontSize = textSize + "px";
             output.style.setProperty('--gradient-color-1', gradientColor1);
             output.style.setProperty('--gradient-color-2', gradientColor2);
             output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
@@ -180,14 +165,12 @@
             var output = document.getElementById("output");
             var textInput = document.getElementById("textInput").value;
 
-            // Create a div with the same style and text content as the output div
             var textDiv = document.createElement('div');
             textDiv.style.color = window.getComputedStyle(output).color;
             textDiv.style.fontSize = window.getComputedStyle(output).fontSize;
             textDiv.style.fontFamily = window.getComputedStyle(output).fontFamily;
             textDiv.innerText = textInput;
 
-            // Use HTML2Canvas to capture the div with the text and its style
             html2canvas(textDiv, {
                 useCORS: true,
                 backgroundColor: null
