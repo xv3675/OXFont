@@ -13,208 +13,60 @@
         body {
             font-family: 'Song Myung', serif;
         }
-        #description {
-            color: black;
-            font-size: 16px;
-            text-decoration: none;
-        }
-        #youtube { color: red; text-decoration: underline; }
-        #chzzk { color: green; text-decoration: underline; }
-        #afreeca { color: blue; text-decoration: underline; }
-        #twitch { color: purple; text-decoration: underline; }
         #output {
             font-size: 20px;
             font-family: 'Song Myung', serif;
             text-align: center;
             padding: 20px;
             display: inline-block;
+            background: linear-gradient(to right, #000, #fff);
+            -webkit-background-clip: text;
+            color: transparent;
         }
-    </style>
-
-    <link rel="stylesheet" href="https://html2canvas.hertzen.com/dist/html2canvas.min.css">
-
-    <style>
-        @font-face {
-            font-family: 'GapyeongHanseokbong-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/GapyeongHanseokbong-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
+        #gradientColor1 {
+            margin-right: 10px;
         }
-        @font-face {
-            font-family: 'yg-jalnan';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Orbit-Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'JalnanGothic';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 300;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Light.otf') format('opentype');
-        }
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 500;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Medium.otf') format('opentype');
-        }
-        @font-face {
-            font-family: 'DNFForgedBlade';
-            font-style: normal;
-            font-weight: 700;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Bold.otf') format('opentype');
-        }
-        @font-face {
-            font-family: 'PartialSansKR-Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'DNFBitBitv2';
-            font-style: normal;
-            font-weight: 400;
-            src: url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf') format('opentype');
-        }
-        @font-face {
-            font-family: 'Giants-Inline';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'omyu_pretty';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'MBC1961GulimM';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'KimjungchulMyungjo-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Ansungtangmyun-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/Ansungtangmyun-Bold.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'MYYeongnamnu';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYYeongnamnu.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
+        #gradientColor2 {
+            margin-left: 10px;
         }
     </style>
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
-    <div id="description">
-        This site was created for <a id="youtube" href="https://m.youtube.com/@OhxionYoutube" target="_blank">YouTube</a>, 
-        <a id="chzzk" href="https://m.chzzk.naver.com/706fcc522eeef5bc523e19c3ad69973b" target="_blank">Chzzk</a>, 
-        <a id="afreeca" href="https://bj.afreecatv.com/hirosuetv" target="_blank">Afreeca TV</a>, 
-        <a id="twitch" href="https://m.twitch.tv/chrisoh/home" target="_blank">Twitch</a> streamer OhxioN.
-        <p></p>
-    </div>
-
     <div>
         <label for="textInput">Enter Text:</label>
-        <input type="text" id="textInput" oninput="updateText()">
+        <textarea id="textInput" oninput="updateText()"></textarea>
+    </div>
+    <div>
+        <button onclick="toggleBold()">Bold</button>
+        <button onclick="toggleItalic()">Italic</button>
+        <button onclick="toggleUnderline()">Underline</button>
     </div>
     <div>
         <label for="fontSelect">Select Font:</label>
         <select id="fontSelect" onchange="changeFont()">
             <option value="none" selected disabled hidden>None</option>
-            <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
-            <option value="'yg-jalnan', sans-serif">yg-jalnan</option>
-            <option value="'Orbit-Regular', serif">Orbit-Regular</option>
-            <option value="'JalnanGothic', sans-serif">JalnanGothic</option>
-            <option value="'DNFForgedBlade', sans-serif">DNFForgedBlade</option>
-            <option value="'PartialSansKR-Regular', serif">PartialSansKR-Regular</option>
-            <option value="'DNFBitBitv2', sans-serif">DNFBitBitv2</option>
-            <option value="'Giants-Inline', sans-serif">Giants-Inline</option>
-            <option value="'omyu_pretty', sans-serif">omyu_pretty</option>
-            <option value="'MBC1961GulimM', sans-serif">MBC1961GulimM</option>
-            <option value="'KimjungchulMyungjo-Bold', sans-serif">KimjungchulMyungjo-Bold</option>
-            <option value="'Ansungtangmyun-Bold', sans-serif">Ansungtangmyun-Bold</option>
-            <option value="'MYYeongnamnu', sans-serif">MYYeongnamnu</option>
+            <!-- (ê¸°ì¡´ í°í¸ ì í ìµìì ê·¸ëë¡ ì ì§) -->
         </select>
     </div>
     <div>
         <label for="textSize">Text Size (px):</label>
         <input type="range" id="textSize" min="1" max="100" step="1" value="20" onchange="updateStyle()">
-        
     </div>
     <div>
-        <label for="textBold">Bold:</label>
-        <input type="checkbox" id="textBold" onchange="updateStyle()">
-    </div>
-    <div>
-        <label for="textItalic">Italic:</label>
-        <input type="checkbox" id="textItalic" onchange="updateStyle()">
-    </div>
-    <div>
-        <label for="textUnderline">Underline:</label>
-        <input type="checkbox" id="textUnderline" onchange="updateStyle()">
-    </div>
-    <div>
-        <label for="colorType">Color Type:</label>
-        <select id="colorType" onchange="updateTextColor()">
-            <option value="solid">Solid Color</option>
-        </select>
-    </div>
-    <div id="solidColorSection">
-        <label for="textColor">Text Color:</label>
-        <input type="color" id="textColor" onchange="updateStyle()">
+        <label for="gradientColor1">Gradient Color 1:</label>
+        <input type="color" id="gradientColor1" onchange="updateStyle()">
+        <label for="gradientColor2">Gradient Color 2:</label>
+        <input type="color" id="gradientColor2" onchange="updateStyle()">
     </div>
     <div>
         <label for="borderThickness">Border Thickness (px):</label>
         <input type="range" id="borderThickness" min="0" max="6" step="1" value="0" onchange="updateStyle()">
-        
     </div>
     <div>
         <label for="borderColor">Border Color:</label>
         <input type="color" id="borderColor" onchange="updateStyle()">
-    </div>
-    <div class="slider-container">
-        <label class="slider-label" for="shadowDistance">Shadow Distance:</label>
-        <input type="range" id="shadowDistance" min="0" max="50" value="0" oninput="updateStyle()">
-        
-    </div>
-    <div class="slider-container">
-        <label class="slider-label" for="shadowAngle">Shadow Angle:</label>
-        <input type="range" id="shadowAngle" min="0" max="360" value="0" oninput="updateStyle()">
-        
-    </div>
-    <div>
-        <label for="shadowBlur">Shadow Blur (px):</label>
-        <input type="number" id="shadowBlur" step="1" value="0" onchange="updateStyle()">
-    </div>
-    <div>
-        <label for="shadowColor">Shadow Color:</label>
-        <input type="color" id="shadowColor" onchange="updateStyle()">
-        <label for="shadowColorAlpha">Shadow Color Alpha:</label>
-        <input type="range" id="shadowColorAlpha" min="0" max="1" step="0.01" value="0" onchange="updateStyle()">
     </div>
     <div id="output">Sample Text</div>
     <button onclick="generatePNG()">Generate PNG</button>
@@ -225,10 +77,28 @@
             document.getElementById("output").innerText = textInput;
         }
 
+        function toggleBold() {
+            var output = document.getElementById("output");
+            output.style.fontWeight = (output.style.fontWeight === "bold") ? "normal" : "bold";
+            updateStyle();
+        }
+
+        function toggleItalic() {
+            var output = document.getElementById("output");
+            output.style.fontStyle = (output.style.fontStyle === "italic") ? "normal" : "italic";
+            updateStyle();
+        }
+
+        function toggleUnderline() {
+            var output = document.getElementById("output");
+            output.style.textDecoration = (output.style.textDecoration === "underline") ? "none" : "underline";
+            updateStyle();
+        }
+
         function changeFont() {
             var selectedFont = document.getElementById("fontSelect").value;
             document.getElementById("output").style.fontFamily = selectedFont;
-            updateStyle(); // Ensure styles are updated when the font changes
+            updateStyle();
         }
 
         function updateStyle() {
@@ -240,75 +110,41 @@
             var textUnderline = document.getElementById("textUnderline").checked ? "underline" : "none";
             var borderColor = document.getElementById("borderColor").value;
             var borderThickness = document.getElementById("borderThickness").value;
-            var shadowDistance = document.getElementById("shadowDistance").value;
-            var shadowAngle = document.getElementById("shadowAngle").value;
-            var shadowBlur = document.getElementById("shadowBlur").value;
-            var shadowColor = document.getElementById("shadowColor").value;
-            var shadowColorAlpha = document.getElementById("shadowColorAlpha").value;
+            var gradientColor1 = document.getElementById("gradientColor1").value;
+            var gradientColor2 = document.getElementById("gradientColor2").value;
 
             output.style.fontSize = textSize + "px";
             output.style.fontWeight = textBold;
             output.style.fontStyle = textItalic;
             output.style.textDecoration = textUnderline;
 
-            output.style.color = document.getElementById("textColor").value;
-            output.style.backgroundColor = "transparent";
+            output.style.background = `linear-gradient(to right, ${gradientColor1}, ${gradientColor2})`;
+            output.style.webkitBackgroundClip = "text";
+            output.style.color = "transparent";
 
             output.style.webkitTextStrokeWidth= borderThickness + "px";
             output.style.webkitTextStrokeColor = borderColor;
-
-            output.style.textShadow = calculateTextShadow(
-                shadowDistance,
-                shadowAngle,
-                shadowBlur,
-                shadowColor,
-                shadowColorAlpha
-            );
-        }
-
-        function updateTextColor() {
-            var colorType = document.getElementById("colorType").value;
-            var solidColorSection = document.getElementById("solidColorSection");
-
-            if (colorType === "solid") {
-                solidColorSection.style.display = "block";
-            } else {
-                solidColorSection.style.display = "none";
-            }
-
-            updateStyle();
-        }
-
-        function calculateTextShadow(distance, angle, blur, color, alpha) {
-            var radians = (angle * Math.PI) / 180;
-            var x = distance * Math.cos(radians);
-            var y = distance * Math.sin(radians);
-
-            return x + "px " + y + "px " + blur + "px rgba(" +
-                parseInt(color.substring(1, 3), 16) + "," +
-                parseInt(color.substring(3, 5), 16) + "," +
-                parseInt(color.substring(5, 7), 16) + "," + alpha + ")";
         }
 
         function generatePNG() {
-    var output = document.getElementById("output");
-    html2canvas(output, {
-        width: output.offsetWidth,
-        height: output.offsetHeight,
-        scale: 2,
-        backgroundColor: null  // This line makes the background transparent
-    }).then(canvas => {
-        var link = document.createElement('a');
-        link.href = canvas.toDataURL("image/png");
-        link.download = 'text_image.png';
-        link.click();
-    });
-}
-                document.addEventListener("DOMContentLoaded", function () {
+            var output = document.getElementById("output");
+            html2canvas(output, {
+                width: output.offsetWidth,
+                height: output.offsetHeight,
+                scale: 2,
+                backgroundColor: null
+            }).then(canvas => {
+                var link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = 'text_image.png';
+                link.click();
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
             updateText();
             updateStyle();
         });
-        
     </script>
 </body>
 </html>
