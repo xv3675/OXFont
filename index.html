@@ -25,8 +25,7 @@
             flex: 1;
         }
 
-        #leftSection,
-        #rightSection {
+        #leftSection, #rightSection {
             flex: 1;
             padding: 20px;
         }
@@ -65,21 +64,10 @@
             text-align: center;
             padding: 20px;
             display: inline-block;
-            position: relative;
-        }
-
-        #output:before {
-            content: attr(data-text);
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
+            background: linear-gradient(to right, #000, #fff);
             -webkit-background-clip: text;
             color: transparent;
+            margin-bottom: 20px;
         }
 
         #generateButton {
@@ -94,6 +82,20 @@
         #generateButton:hover {
             background-color: #45a049;
         }
+
+        #output::before {
+            content: attr(data-text);
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
     </style>
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -104,7 +106,7 @@
         <div id="leftSection">
             <div id="controls">
                 <label for="textInput">Enter Text:</label>
-                <textarea id="textInput" oninput="updateText()">Your text here</textarea>
+                <textarea id="textInput" oninput="updateText()">hihi</textarea>
 
                 <label for="fontSelect">Select Font:</label>
                 <select id="fontSelect" onchange="changeFont()">
@@ -140,7 +142,7 @@
     </div>
 
     <div id="outputSection">
-        <div id="output" data-text="Your text here"></div>
+        <div id="output" data-text="hihi"></div>
     </div>
 
     <script>
@@ -166,7 +168,7 @@
             var borderThickness = document.getElementById("borderThickness").value;
             var borderColor = document.getElementById("borderColor").value;
 
-            output.styleoutput.style.fontSize = textSize + "px";
+            output.style.fontSize= textSize + "px";
             output.style.setProperty('--gradient-color-1', gradientColor1);
             output.style.setProperty('--gradient-color-2', gradientColor2);
             output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
@@ -176,15 +178,16 @@
 
         function generatePNG() {
             var output = document.getElementById("output");
-            
-            // Create a div to clone the styled text for HTML2Canvas
+            var textInput = document.getElementById("textInput").value;
+
+            // Create a div with the same style and text content as the output div
             var textDiv = document.createElement('div');
             textDiv.style.color = window.getComputedStyle(output).color;
             textDiv.style.fontSize = window.getComputedStyle(output).fontSize;
             textDiv.style.fontFamily = window.getComputedStyle(output).fontFamily;
-            textDiv.innerText = output.getAttribute("data-text");
-            
-            // Use HTML2Canvas to capture the div with styled text
+            textDiv.innerText = textInput;
+
+            // Use HTML2Canvas to capture the div with the text and its style
             html2canvas(textDiv, {
                 useCORS: true,
                 backgroundColor: null
