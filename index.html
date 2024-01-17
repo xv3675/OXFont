@@ -25,7 +25,8 @@
             flex: 1;
         }
 
-        #leftSection, #rightSection {
+        #leftSection,
+        #rightSection {
             flex: 1;
             padding: 20px;
         }
@@ -64,9 +65,6 @@
             text-align: center;
             padding: 20px;
             display: inline-block;
-            background: linear-gradient(to right, #000, #fff);
-            -webkit-background-clip: text;
-            color: transparent;
             margin-bottom: 20px;
         }
 
@@ -82,32 +80,29 @@
         #generateButton:hover {
             background-color: #45a049;
         }
-        
-    #output {
-        font-size: 30px;
-        text-align: center;
-        padding: 20px;
-        display: inline-block;
-        margin-bottom: 20px;
-        position: relative;
-        background: none; /* 배경을 투명으로 설정합니다. */
-        -webkit-background-clip: text;
-        color: transparent;
-    }
 
-    #output:before {
-        content: attr(data-text);
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
-        -webkit-background-clip: text;
-        color: transparent;
-    }
+        #output {
+            font-size: 30px;
+            text-align: center;
+            padding: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #output:before {
+            content: attr(data-text);
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
     </style>
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -154,15 +149,14 @@
     </div>
 
     <div id="outputSection">
-        <div id="output">íì´íì´</div>
+        <div id="output" data-text="Your Text Here">Your Text Here</div>
     </div>
 
     <script>
         function updateText() {
             var textInput = document.getElementById("textInput").value;
             document.getElementById("output").innerText = textInput;
-            updateStyle();
-        }
+            updateStyle();}
 
         function changeFont() {
             var selectedFont = document.getElementById("fontSelect").value;
@@ -171,29 +165,33 @@
         }
 
         function updateStyle() {
-        var output = document.getElementById("output");
+            var output = document.getElementById("output");
 
-        var textSize = document.getElementById("textSize").value;
-        var gradientDirection = document.getElementById("gradientDirection").value;
-        var gradientColor1 = document.getElementById("gradientColor1").value;
-        var gradientColor2 = document.getElementById("gradientColor2").value;
-        var borderThickness = document.getElementById("borderThickness").value;
-        var borderColor = document.getElementById("borderColor").value;
+            var textSize = document.getElementById("textSize").value;
+            var gradientDirection = document.getElementById("gradientDirection").value;
+            var gradientColor1 = document.getElementById("gradientColor1").value;
+            var gradientColor2 = document.getElementById("gradientColor2").value;
+            var borderThickness = document.getElementById("borderThickness").value;
+            var borderColor = document.getElementById("borderColor").value;
 
-        // 업데이트된 부분
-        output.style.fontSize = textSize + "px";
-        output.style.setProperty('--gradient-color-1', gradientColor1);
-        output.style.setProperty('--gradient-color-2', gradientColor2);
-        output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
-        output.style.webkitTextStrokeWidth = borderThickness + "px";
-        output.style.webkitTextStrokeColor = borderColor;
-    }
+            output.style.fontSize = textSize + "px";
+            output.style.setProperty('--gradient-color-1', gradientColor1);
+            output.style.setProperty('--gradient-color-2', gradientColor2);
+            output.style.webkitTextStrokeWidth = borderThickness + "px";
+            output.style.webkitTextStrokeColor = borderColor;
+        }
+
         function generatePNG() {
             var output = document.getElementById("output");
-            html2canvas(output, {
-                width: output.offsetWidth,
-                height: output.offsetHeight,
-                scale: 2,
+
+            var textDiv = document.createElement('div');
+            textDiv.style.color = window.getComputedStyle(output).color;
+            textDiv.style.fontSize = window.getComputedStyle(output).fontSize;
+            textDiv.style.fontFamily = window.getComputedStyle(output).fontFamily;
+            textDiv.innerText = output.innerText;
+
+            html2canvas(textDiv, {
+                useCORS: true,
                 backgroundColor: null
             }).then(canvas => {
                 var link = document.createElement('a');
