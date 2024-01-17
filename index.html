@@ -84,14 +84,13 @@
         }
         
     #output {
+        font#output {
         font-size: 30px;
         text-align: center;
         padding: 20px;
         display: inline-block;
         margin-bottom: 20px;
-        background: linear-gradient(to right, #000, #fff);
-        -webkit-background-clip: text;
-        color: transparent;
+        position: relative; /* 이 부분 추가 */
     }
 
     #output:before {
@@ -103,7 +102,7 @@
         right: 0;
         bottom: 0;
         z-index: -1;
-        background: linear-gradient(to right, #000, #fff);
+        background: linear-gradient(to right, var(--gradient-color-1), var(--gradient-color-2));
         -webkit-background-clip: text;
         color: transparent;
     }
@@ -170,24 +169,23 @@
         }
 
         function updateStyle() {
-    var output = document.getElementById("output");
+        var output = document.getElementById("output");
 
-    var textSize = document.getElementById("textSize").value;
-    var gradientDirection = document.getElementById("gradientDirection").value;
-    var gradientColor1 = document.getElementById("gradientColor1").value;
-    var gradientColor2 = document.getElementById("gradientColor2").value;
-    var borderThickness = document.getElementById("borderThickness").value;
-    var borderColor = document.getElementById("borderColor").value;
+        var textSize = document.getElementById("textSize").value;
+        var gradientDirection = document.getElementById("gradientDirection").value;
+        var gradientColor1 = document.getElementById("gradientColor1").value;
+        var gradientColor2 = document.getElementById("gradientColor2").value;
+        var borderThickness = document.getElementById("borderThickness").value;
+        var borderColor = document.getElementById("borderColor").value;
 
-    output.style.fontSize = textSize + "px";
-    output.style.position = "relative";  // ì¶ê°ë ë¶ë¶
-    output.style.color = "transparent";  // ì¶ê°ë ë¶ë¶
-
-    output.setAttribute("data-text", document.getElementById("textInput").value);  // ì¶ê°ë ë¶ë¶
-
-    output.style.webkitTextStrokeWidth = borderThickness + "px";
-    output.style.webkitTextStrokeColor = borderColor;
-}
+        // 업데이트된 부분
+        output.style.fontSize = textSize + "px";
+        output.style.setProperty('--gradient-color-1', gradientColor1);
+        output.style.setProperty('--gradient-color-2', gradientColor2);
+        output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
+        output.style.webkitTextStrokeWidth = borderThickness + "px";
+        output.style.webkitTextStrokeColor = borderColor;
+    }
         function generatePNG() {
             var output = document.getElementById("output");
             html2canvas(output, {
