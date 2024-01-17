@@ -15,28 +15,19 @@
             font-family: 'MYYeongnamnu', sans-serif;
             margin: 0;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             height: 100vh;
             background-color: #f8f8f8;
         }
 
-        #leftSection,
-        #rightSection {
-            width: 50%;
+        #upperSection {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex: 1;
+        }
+
+        #leftSection, #rightSection {
+            flex: 1;
             padding: 20px;
-        }
-
-        #leftSection {
-            background-color: #ffffff;
-            justify-content: space-around;
-        }
-
-        #rightSection {
-            background-color: #f0f0f0;
-            justify-content: flex-start;
         }
 
         #controls {
@@ -59,6 +50,13 @@
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
+        }
+
+        #outputSection {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #output {
@@ -90,92 +88,101 @@
 </head>
 
 <body>
-    <div id="leftSection">
-        <div id="controls">
-            <label for="textInput">Enter Text:</label>
-            <textarea id="textInput" oninput="updateText()">hihi</textarea>
+    <div id="upperSection">
+        <div id="leftSection">
+            <div id="controls">
+                <label for="textInput">Enter Text:</label>
+                <textarea id="textInput" oninput="updateText()">íì´íì´</textarea>
 
-            <label for="fontSelect">Select Font:</label>
-            <select id="fontSelect" onchange="changeFont()">
-                <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
-                <!-- Add other font options here -->
-            </select>
+                <label for="fontSelect">Select Font:</label>
+                <select id="fontSelect" onchange="changeFont()">
+                    <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
+                    <!-- Add other font options here -->
+                </select>
 
-            <label for="gradientDirection">Gradient Direction:</label>
-            <input type="range" id="gradientDirection" min="0" max="360" step="1" value="0" onchange="updateStyle()">
+                <label for="gradientDirection">Gradient Direction:</label>
+                <input type="range" id="gradientDirection" min="0" max="360" step="1" value="0" onchange="updateStyle()">
 
-            <label for="gradientColor1">Gradient Color 1:</label>
-            <input type="color" id="gradientColor1" onchange="updateStyle()">
+                <label for="gradientColor1">Gradient Color 1:</label>
+                <input type="color" id="gradientColor1" onchange="updateStyle()">
 
-            <label for="gradientColor2">Gradient Color 2:</label>
-            <input type="color" id="gradientColor2" onchange="updateStyle()">
+                <label for="gradientColor2">Gradient Color 2:</label>
+                <input type="color" id="gradientColor2" onchange="updateStyle()">
+            </div>
+        </div>
+        <div id="rightSection">
+            <div id="controls">
+                <label for="textSize">Text Size (px):</label>
+                <input type="range" id="textSize" min="1" max="100" step="1" value="30" onchange="updateStyle()">
+
+                <label for="borderThickness">Border Thickness (px):</label>
+                <input type="range" id="borderThickness" min="0" max="6" step="1" value="2" onchange="updateStyle()">
+
+                <label for="borderColor">Border Color:</label>
+                <input type="color" id="borderColor" onchange="updateStyle()">
+            </div>
+            <div>
+                <button id="generateButton" onclick="generatePNG()">Generate PNG</button>
+            </div>
         </div>
     </div>
 
-    <div id="rightSection">
-        <div id="controls">
-            <label for="borderThickness">Border Thickness (px):</label>
-            <input type="range" id="borderThickness" min="0" max="6" step="1" value="2" onchange="updateStyle()">
-
-            <label for="textSize">Text Size (px):</label>
-            <input type="range" id="textSize" min="1" max="100" step="1" value="30" onchange="updateStyle()">
-        </div>
-
-        <div id="output">hihi</div>
-        <button id="generateButton" onclick="generatePNG()">Generate PNG</button>
+    <div id="outputSection">
+        <div id="output">íì´íì´</div>
     </div>
 
     <script>
         function updateText() {
-    var textInput = document.getElementById("textInput").value;
-    document.getElementById("output").innerText = textInput;
-    updateStyle();
-}
+            var textInput = document.getElementById("textInput").value;
+            document.getElementById("output").innerText = textInput;
+            updateStyle();
+        }
 
-function changeFont() {
-    var selectedFont = document.getElementById("fontSelect").value;
-    document.getElementById("output").style.fontFamily = selectedFont;
-    updateStyle();
-}
+        function changeFont() {
+            var selectedFont = document.getElementById("fontSelect").value;
+            document.getElementById("output").style.fontFamily = selectedFont;
+            updateStyle();
+        }
 
-function updateStyle() {
-    var output = document.getElementById("output");
+        function updateStyle() {
+            var output = document.getElementById("output");
 
-    var textSize = document.getElementById("textSize").value;
-    var gradientDirection = document.getElementById("gradientDirection").value;
-    var gradientColor1 = document.getElementById("gradientColor1").value;
-    var gradientColor2 = document.getElementById("gradientColor2").value;
-    var borderThickness = document.getElementById("borderThickness").value;
+            var textSize = document.getElementById("textSize").value;
+            var gradientDirection = document.getElementById("gradientDirection").value;
+            var gradientColor1 = document.getElementById("gradientColor1").value;
+            var gradientColor2 = document.getElementById("gradientColor2").value;
+            var borderThickness = document.getElementById("borderThickness").value;
+            var borderColor = document.getElementById("borderColor").value;
 
-    output.style.fontSize = textSize + "px";
-    output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
-    output.style.webkitBackgroundClip = "text";
-    output.style.color = "transparent";
+            output.style.fontSize = textSize + "px";
+            output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
+            output.style.webkitBackgroundClip = "text";
+            output.style.color = "transparent";
 
-    output.style.webkitTextStrokeWidth = borderThickness + "px";
-    output.style.webkitTextStrokeColor = borderColor;
-}
+            output.style.webkitTextStrokeWidth = borderThickness + "px";
+            output.style.webkitTextStrokeColor = borderColor;
+        }
 
-function generatePNG() {
-    var output = document.getElementById("output");
-    html2canvas(output, {
-        width: output.offsetWidth,
-        height: output.offsetHeight,
-        scale: 2,
-        backgroundColor: null
-    }).then(canvas => {
-        var link = document.createElement('a');
-        link.href = canvas.toDataURL("image/png");
-        link.download = 'text_image.png';
-        link.click();
-    });
-}
+        function generatePNG() {
+            var output = document.getElementById("output");
+            html2canvas(output, {
+                width: output.offsetWidth,
+                height: output.offsetHeight,
+                scale: 2,
+                backgroundColor: null
+            }).then(canvas => {
+                var link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = 'text_image.png';
+                link.click();
+            });
+        }
 
-document.addEventListener("DOMContentLoaded", function () {
-    updateText();
-    changeFont(); // Added to initialize font correctly
-    updateStyle();
-});
+        document.addEventListener("DOMContentLoaded", function () {
+            updateText();
+            changeFont();
+            updateStyle();
+        });
     </script>
 </body>
 
