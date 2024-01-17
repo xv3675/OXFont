@@ -19,11 +19,17 @@
             background-color: #f8f8f8;
         }
 
+        #left-section,
+        #right-section {
+            width: 50%;
+            padding: 20px;
+        }
+
         #controls {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin: 20px;
+            margin-bottom: 20px;
         }
 
         label {
@@ -41,6 +47,14 @@
             border-radius: 5px;
         }
 
+        #output-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 20px;
+        }
+
         #output {
             font-size: 30px;
             text-align: center;
@@ -49,7 +63,6 @@
             background: linear-gradient(to right, #000, #fff);
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 20px;
         }
 
         #generateButton {
@@ -70,62 +83,45 @@
 </head>
 
 <body>
-    <div id="controls">
-        <label for="fontSelect">Select Font:</label>
-        <select id="fontSelect" onchange="changeFont()">
-            <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
-            <option value="'yg-jalnan', sans-serif">yg-jalnan</option>
-            <option value="'Orbit-Regular', sans-serif">Orbit-Regular</option>
-            <option value="'JalnanGothic', sans-serif">JalnanGothic</option>
-            <option value="'DNFForgedBlade-Light', sans-serif">DNFForgedBlade-Light</option>
-            <option value="'DNFForgedBlade-Medium', sans-serif">DNFForgedBlade-Medium</option>
-            <option value="'DNFForgedBlade-Bold', sans-serif">DNFForgedBlade-Bold</option>
-            <option value="'PartialSansKR-Regular', sans-serif">PartialSansKR-Regular</option>
-            <option value="'DNFBitBitv2', sans-serif">DNFBitBitv2</option>
-            <option value="'Giants-Inline', sans-serif">Giants-Inline</option>
-            <option value="'omyu_pretty', sans-serif">omyu_pretty</option>
-            <option value="'MBC1961GulimM', sans-serif">MBC1961GulimM</option>
-            <option value="'KimjungchulMyungjo-Bold', sans-serif">KimjungchulMyungjo-Bold</option>
-            <option value="'Ansungtangmyun-Bold', sans-serif">Ansungtangmyun-Bold</option>
-            <option value="'MYYeongnamnu', sans-serif">MYYeongnamnu</option>
-        </select>
+    <div id="left-section">
+        <div id="controls">
+            <label for="textInput">Enter Text:</label>
+            <textarea id="textInput" oninput="updateText()">íì´íì´</textarea>
 
-        <label for="textSize">Text Size (px):</label>
-        <input type="range" id="textSize" min="1" max="100" step="1" value="30" onchange="updateStyle()">
+            <label for="fontSelect">Select Font:</label>
+            <select id="fontSelect" onchange="changeFont()">
+                <option value="'GapyeongHanseokbong-Bold', sans-serif">GapyeongHanseokbong-Bold</option>
+                <!-- Add other font options here -->
+            </select>
+
+            <label for="gradientDirection">Gradient Direction:</label>
+            <input type="range" id="gradientDirection" min="0" max="360" step="1" value="0" onchange="updateStyle()">
+
+            <label for="gradientColor1">Gradient Color 1:</label>
+            <input type="color" id="gradientColor1" onchange="updateStyle()">
+
+            <label for="gradientColor2">Gradient Color 2:</label>
+            <input type="color" id="gradientColor2" onchange="updateStyle()">
+        </div>
     </div>
 
-    <div>
-        <label for="textInput">Enter Text:</label>
-        <textarea id="textInput" oninput="updateText()">íì´íì´</textarea>
+    <div id="right-section">
+        <div id="controls">
+            <label for="textSize">Text Size (px):</label>
+            <input type="range" id="textSize" min="1" max="100" step="1" value="30" onchange="updateStyle()">
+
+            <label for="borderThickness">Border Thickness (px):</label>
+            <input type="range" id="borderThickness" min="0" max="6" step="1" value="2" onchange="updateStyle()">
+
+            <label for="borderColor">Border Color:</label>
+            <input type="color" id="borderColor"onchange="updateStyle()">
+        </div>
     </div>
 
-    <div>
-        <label for="gradientDirection">Gradient Direction:</label>
-        <input type="range" id="gradientDirection" min="0" max="360" step="1" value="0" onchange="updateStyle()">
+    <div id="output-section">
+        <div id="output">Sample Text</div>
+        <button id="generateButton" onclick="generatePNG()">Generate PNG</button>
     </div>
-
-    <div>
-        <label for="gradientColor1">Gradient Color 1:</label>
-        <input type="color" id="gradientColor1" onchange="updateStyle()">
-    </div>
-
-    <div>
-        <label for="gradientColor2">Gradient Color 2:</label>
-        <input type="color" id="gradientColor2" onchange="updateStyle()">
-    </div>
-
-    <div>
-        <label for="borderThickness">Border Thickness (px):</label>
-        <input type="range" id="borderThickness" min="0" max="6" step="1" value="2" onchange="updateStyle()">
-    </div>
-
-    <div>
-        <label for="borderColor">Border Color:</label>
-        <input type="color" id="borderColor" onchange="updateStyle()">
-    </div>
-
-    <div id="output">íì´íì´</div>
-    <button id="generateButton" onclick="generatePNG()">Generate PNG</button>
 
     <script>
         function updateText() {
@@ -148,7 +144,9 @@
             var gradientColor1 = document.getElementById("gradientColor1").value;
             var gradientColor2 = document.getElementById("gradientColor2").value;
             var borderThickness = document.getElementById("borderThickness").value;
-            var borderColor = document.getElementById("borderColor").valueoutput.style.fontSize = textSize + "px";
+            var borderColor = document.getElementById("borderColor").value;
+
+            output.style.fontSize = textSize + "px";
             output.style.backgroundImage = `linear-gradient(${gradientDirection}deg, ${gradientColor1}, ${gradientColor2})`;
             output.style.webkitBackgroundClip = "text";
             output.style.color = "transparent";
@@ -174,7 +172,7 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             updateText();
-            changeFont(); // Added to initialize font correctly
+            changeFont();
             updateStyle();
         });
     </script>
